@@ -77,6 +77,8 @@ public class Filesystem extends Plugin {
         return c.getExternalFilesDir(null);
       case "EXTERNAL_STORAGE":
         return Environment.getExternalStorageDirectory();
+      case "CAMERA_ROLL":
+        return Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
     }
     return null;
   }
@@ -96,6 +98,15 @@ public class Filesystem extends Plugin {
     } else {
       if(!androidDirectory.exists()) {
         androidDirectory.mkdir();
+      }
+    }
+
+    if ("CAMERA_ROLL".equals(directory)) {
+      try {
+        File file = File.createTempFile(path, ".jpg", androidDirectory);
+        return file;
+      } catch (IOException e) {
+        e.printStackTrace();
       }
     }
 

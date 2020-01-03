@@ -572,7 +572,11 @@ export enum FilesystemDirectory {
   /**
    * The external storage directory (Android only)
    */
-  ExternalStorage = 'EXTERNAL_STORAGE'
+  ExternalStorage = 'EXTERNAL_STORAGE',
+  /**
+   * Camera roll directory
+   */
+  CameraRoll = 'CAMERA_ROLL'
 }
 
 export enum FilesystemEncoding {
