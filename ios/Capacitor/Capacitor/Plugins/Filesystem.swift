@@ -387,6 +387,14 @@ public class CAPFilesystemPlugin : CAPPlugin {
       handleError(call, "Invalid from path")
       return
     }
+
+    if (toDirectoryOption == "CAMERA_ROLL") {
+        let photo_path = fromUrl.path;
+        let image = UIImage(contentsOfFile: photo_path);
+        UIImageWriteToSavedPhotosAlbum(image!, nil, nil, nil);
+        call.success();
+        return;
+    }
     
     guard let toUrl = getFileUrl(to, toDirectoryOption) else {
       handleError(call, "Invalid to path")
